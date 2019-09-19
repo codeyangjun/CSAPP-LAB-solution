@@ -1117,6 +1117,7 @@ Disassembly of section .text:
   400f0e:	74 20                	je     400f30 <phase_2+0x34>
   400f10:	e8 25 05 00 00       	callq  40143a <explode_bomb>
   400f15:	eb 19                	jmp    400f30 <phase_2+0x34>
+  	
   400f17:	8b 43 fc             	mov    -0x4(%rbx),%eax
   400f1a:	01 c0                	add    %eax,%eax
   400f1c:	39 03                	cmp    %eax,(%rbx)
@@ -1126,6 +1127,7 @@ Disassembly of section .text:
   400f29:	48 39 eb             	cmp    %rbp,%rbx
   400f2c:	75 e9                	jne    400f17 <phase_2+0x1b>
   400f2e:	eb 0c                	jmp    400f3c <phase_2+0x40>
+  	
   400f30:	48 8d 5c 24 04       	lea    0x4(%rsp),%rbx
   400f35:	48 8d 6c 24 18       	lea    0x18(%rsp),%rbp
   400f3a:	eb db                	jmp    400f17 <phase_2+0x1b>
@@ -1144,6 +1146,8 @@ Disassembly of section .text:
   400f60:	83 f8 01             	cmp    $0x1,%eax
   400f63:	7f 05                	jg     400f6a <phase_3+0x27>
   400f65:	e8 d0 04 00 00       	callq  40143a <explode_bomb>
+  	
+  	
   400f6a:	83 7c 24 08 07       	cmpl   $0x7,0x8(%rsp)
   400f6f:	77 3c                	ja     400fad <phase_3+0x6a>
   400f71:	8b 44 24 08          	mov    0x8(%rsp),%eax
@@ -1162,6 +1166,8 @@ Disassembly of section .text:
   400fa4:	eb 18                	jmp    400fbe <phase_3+0x7b>
   400fa6:	b8 47 01 00 00       	mov    $0x147,%eax
   400fab:	eb 11                	jmp    400fbe <phase_3+0x7b>
+  	
+  	
   400fad:	e8 88 04 00 00       	callq  40143a <explode_bomb>
   400fb2:	b8 00 00 00 00       	mov    $0x0,%eax
   400fb7:	eb 05                	jmp    400fbe <phase_3+0x7b>
