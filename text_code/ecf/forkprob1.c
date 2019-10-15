@@ -1,12 +1,12 @@
 /* $begin forkprob1 */
 #include "csapp.h"
 
-int main() 
+int main()
 {
     int i;
 
-    for (i = 0; i < 2; i++) 
-	Fork();
+    for (i = 0; i < 2; i++)
+        Fork();
     printf("hello\n");
     exit(0);
 }

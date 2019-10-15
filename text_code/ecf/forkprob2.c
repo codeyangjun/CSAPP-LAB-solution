@@ -1,22 +1,34 @@
 /* $begin forkprob2 */
 #include "csapp.h"
 
-void end(void) 
+void end(void)
 {
-    printf("2"); fflush(stdout);
+    printf("2\n");
+    printf("L1\n");
+    fflush(stdout);
+
 }
 
-int main() 
+int main()
 {
-    if (Fork() == 0) 
-	atexit(end);
-    if (Fork() == 0) {
-	printf("0"); fflush(stdout); 
+    printf("L0\n");
+    if (Fork() == 0)
+        atexit(end);
+    printf("L2\n");
+
+    if (Fork() == 0)
+    {
+        printf("0\n");
+        printf("L3\n");
+        fflush(stdout);
     }
-    else {
-        printf("1"); fflush(stdout); 
+    else
+    {
+        printf("1\n");
+        printf("L4\n");
+        fflush(stdout);
     }
+    printf("L5\n");
     exit(0);
 }
 /* $end forkprob2 */
-

@@ -1,11 +1,12 @@
 #include "csapp.h"
 
 /* $begin signal2 */
-void handler2(int sig) 
+void handler2(int sig)
 {
     int olderrno = errno;
 
-    while (waitpid(-1, NULL, 0) > 0) {
+    while (waitpid(-1, NULL, 0) > 0)
+    {
         Sio_puts("Handler reaped child\n");
     }
     if (errno != ECHILD)
@@ -15,7 +16,7 @@ void handler2(int sig)
 }
 /* $end signal2 */
 
-int main() 
+int main()
 {
     int i, n;
     char buf[MAXBUF];
@@ -24,8 +25,10 @@ int main()
         unix_error("signal error");
 
     /* Parent creates children */
-    for (i = 0; i < 3; i++) {
-        if (Fork() == 0) {
+    for (i = 0; i < 3; i++)
+    {
+        if (Fork() == 0)
+        {
             printf("Hello from child %d\n", (int)getpid());
             exit(0);
         }
@@ -41,4 +44,3 @@ int main()
 
     exit(0);
 }
-
