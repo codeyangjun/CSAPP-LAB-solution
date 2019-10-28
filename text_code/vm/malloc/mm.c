@@ -38,10 +38,19 @@
 /* Given block ptr bp, compute address of its header and footer */
 #define HDRP(bp)       ((char *)(bp) - WSIZE)                      //line:vm:mm:hdrp
 #define FTRP(bp)       ((char *)(bp) + GET_SIZE(HDRP(bp)) - DSIZE) //line:vm:mm:ftrp
+// HDRP header address 很容易理解，看图，bp - WSIZE 就是 header 的地址，同时也可以注意，
+//这里我们也做了类型转换，把bp转成char * ，这样来计算才对。
+// FTRP footer address 同样看图，是 bp + 整个块的大小 - DSIZE，就是我们先把bp移到普通快2的hdr， 
+//然后减去两个WSIZE，也就是DSIZE，得到 footer address
+// 这里我们同时也知道了GET_SIZE 是计算普通块1的大小，而不是普通块1的payload
 
 /* Given block ptr bp, compute address of next and previous blocks */
 #define NEXT_BLKP(bp)  ((char *)(bp) + GET_SIZE(((char *)(bp) - WSIZE))) //line:vm:mm:nextblkp
 #define PREV_BLKP(bp)  ((char *)(bp) - GET_SIZE(((char *)(bp) - DSIZE))) //line:vm:mm:prevblkp
+// 这两个计算方法同样也看图，next block pointer，实际上 ((char *)(bp) - WSIZE) 就是 HDRP，
+//header address，我们得到整个块的大小，然后bp 加上整块大小，这里也知道我们的 address 总是指向 payload
+// prev block pointer, ((char *)(bp) - DSIZE) 得到 previous block footer，
+//计算之前的块的大小，然后bp - 之前的块大小，指向 payload
 /* $end mallocmacros */
 
 /* Global variables */
